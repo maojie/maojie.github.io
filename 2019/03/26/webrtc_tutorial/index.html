@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.2.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"maojie.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="webrtc-to-goHow to download, build and hack WebRTC against the GFW. Before You StartFirst, you need a ladder (public server) to the freedom (can get the full WebRTC source code). 123456789101112131415">
+<meta property="og:type" content="article">
+<meta property="og:title" content="WebRTC Mirror">
+<meta property="og:url" content="https://maojie.github.io/2019/03/26/webrtc_tutorial/index.html">
+<meta property="og:site_name" content="Jeremy&#39;s Blog">
+<meta property="og:description" content="webrtc-to-goHow to download, build and hack WebRTC against the GFW. Before You StartFirst, you need a ladder (public server) to the freedom (can get the full WebRTC source code). 123456789101112131415">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2019-03-25T16:05:30.000Z">
+<meta property="article:modified_time" content="2024-06-12T02:33:03.010Z">
+<meta property="article:author" content="Jeremy Mao">
+<meta property="article:tag" content="webrtc">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://maojie.github.io/2019/03/26/webrtc_tutorial/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://maojie.github.io/2019/03/26/webrtc_tutorial/","path":"2019/03/26/webrtc_tutorial/","title":"WebRTC Mirror"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>WebRTC Mirror | Jeremy's Blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Jeremy's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#webrtc-to-go"><span class="nav-number">1.</span> <span class="nav-text">webrtc-to-go</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Before-You-Start"><span class="nav-number">1.1.</span> <span class="nav-text">Before You Start</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Configure-Gitolite"><span class="nav-number">1.2.</span> <span class="nav-text">Configure Gitolite</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Mirror-WebRTC-third-party-repos-using-Gitolite"><span class="nav-number">1.3.</span> <span class="nav-text">Mirror WebRTC third_party repos using Gitolite</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Expose-all-the-repos-using-gitolite-admin"><span class="nav-number">1.4.</span> <span class="nav-text">Expose all the repos using gitolite-admin</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Download-WebRTC-Source-Code"><span class="nav-number">1.5.</span> <span class="nav-text">Download WebRTC Source Code</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Jeremy Mao</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">1</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://maojie.github.io/2019/03/26/webrtc_tutorial/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Jeremy Mao">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jeremy's Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="WebRTC Mirror | Jeremy's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          WebRTC Mirror
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2019-03-26 00:05:30" itemprop="dateCreated datePublished" datetime="2019-03-26T00:05:30+08:00">2019-03-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2024-06-12 10:33:03" itemprop="dateModified" datetime="2024-06-12T10:33:03+08:00">2024-06-12</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="webrtc-to-go"><a href="#webrtc-to-go" class="headerlink" title="webrtc-to-go"></a>webrtc-to-go</h1><p>How to <strong>download</strong>, <strong>build</strong> and <strong>hack</strong> WebRTC against the GFW.</p>
+<h2 id="Before-You-Start"><a href="#Before-You-Start" class="headerlink" title="Before You Start"></a><u>Before You Start</u></h2><p>First, you need a ladder (public server) to the freedom (can get the full WebRTC source code).</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Start typing the following command from your client machine</span></span><br><span class="line"><span class="comment"># ~/.ssh/id_rsa.pub stands for the identified public key to access the server</span></span><br><span class="line"><span class="comment"># [port] stands for the opened ssh port of the server</span></span><br><span class="line"><span class="comment"># [username] stands for the user name of the server</span></span><br><span class="line"><span class="comment"># [x.x.x.x] stands for the ip address of the server</span></span><br><span class="line">$ ssh -i ~/.ssh/id_rsa.pub -p [port] [username]@[x.x.x.x] <span class="comment"># Login to the server</span></span><br><span class="line">$ <span class="built_in">cd</span> ~</span><br><span class="line">$ sudo apt-get install git</span><br><span class="line">$ git <span class="built_in">clone</span> https://chromium.googlesource.com/chromium/tools/depot_tools</span><br><span class="line">$ <span class="built_in">export</span> PATH=~/depot_tools/:<span class="variable">$PATH</span></span><br><span class="line">$ <span class="built_in">mkdir</span> webrtc &amp;&amp; <span class="built_in">cd</span> webrtc</span><br><span class="line">$ fetch --nohooks webrtc <span class="comment"># May take a long time</span></span><br><span class="line">$ vi .gclient <span class="comment"># Append one line to cache all third_party repos</span></span><br><span class="line">cache_dir = <span class="string">&quot;/home/[username]/webrtc-cache&quot;</span></span><br><span class="line">$ gclient <span class="built_in">sync</span> --nohooks --verbose <span class="comment"># Should take a long time</span></span><br><span class="line">$ <span class="built_in">cd</span> ~/webrtc/src</span><br><span class="line">$ git remote add mirror https://github.com/[username]/webrtc.git</span><br><span class="line">$ git push mirror master</span><br><span class="line">$ <span class="built_in">cd</span> ~/depot_tools</span><br><span class="line">$ git remote add mirror https://github.com/[username]/depot_tools.git</span><br><span class="line">$ git push mirror master</span><br></pre></td></tr></table></figure>
+
+<h2 id="Configure-Gitolite"><a href="#Configure-Gitolite" class="headerlink" title="Configure Gitolite"></a>Configure Gitolite</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -t rsa -f gitolite <span class="comment"># You&#x27;ll get the following two files</span></span><br><span class="line">~/.ssh/gitolite and ~/.ssh/gitolite.pub</span><br><span class="line">$ scp -i ~/.ssh/id_rsa.pub -P [port] ~/.ssh/gitolite.pub [username]@[x.x.x.x]</span><br><span class="line">$ ssh -i ~/.ssh/id_rsa.pub -p [port] [username]@[x.x.x.x] <span class="comment"># Login to the server</span></span><br><span class="line">$ sudo apt-get install gitolite3 <span class="comment"># On Ubuntu 14.04.6 TLS</span></span><br><span class="line">$ gitolite setup -pk gitolite.pub <span class="comment"># You&#x27;ll get the following two repos</span></span><br><span class="line">/home/[username]/repositories/gitolite-admin.git</span><br><span class="line">/home/[username]/repositories/testing.git</span><br><span class="line">$ <span class="built_in">exit</span> <span class="comment"># Exit from the server</span></span><br><span class="line">$ vi ~/.ssh/config <span class="comment"># Add the following content</span></span><br><span class="line">host [x.x.x.x]</span><br><span class="line">  HostName [x.x.x.x]</span><br><span class="line">  IdentityFile ~/.ssh/gitolite</span><br><span class="line">  User [username]</span><br><span class="line">$ git <span class="built_in">clone</span> ssh://[username]@[x.x.x.x]:[port]/gitolite-admin.git</span><br><span class="line"><span class="comment"># gitolite-admin has two directories</span></span><br><span class="line">gitolite-admin/conf/gitolite.conf to manage the remote repositories</span><br><span class="line">gitolite-admin/keydir/ to manage the public keys</span><br></pre></td></tr></table></figure>
+
+<h2 id="Mirror-WebRTC-third-party-repos-using-Gitolite"><a href="#Mirror-WebRTC-third-party-repos-using-Gitolite" class="headerlink" title="Mirror WebRTC third_party repos using Gitolite"></a>Mirror WebRTC third_party repos using Gitolite</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ ssh -i ~/.ssh/id_rsa.pub -p [port] [username]@[x.x.x.x] <span class="comment"># Login to the server</span></span><br><span class="line">$ <span class="built_in">ln</span> -s /home/[username]/webrtc-cache/boringssl.googlesource.com-boringssl /home/[username]/repositories/boringssl.git</span><br><span class="line">$ <span class="built_in">ln</span> -s /home/[username]/webrtc-cache/chromium.googlesource.com-catapult /home/[username]/repositories/catapult.git</span><br><span class="line">$ <span class="built_in">mkdir</span> -p /home/[username]/repositories/chromium/deps</span><br><span class="line">$ <span class="built_in">ln</span> -s /home/[username]/webrtc-cache/chromium.googlesource.com-chromium-deps-icu /home/[username]/repositories/chromium/deps/icu.git</span><br><span class="line">...</span><br><span class="line">$ <span class="built_in">mkdir</span> -p /home/[username]/repositories/webm</span><br><span class="line">$ <span class="built_in">ln</span> -s /home/[username]/webrtc-cache/chromium.googlesource.com-webm-libvpx/ /home/[username]/repositories/webm/libvpx.git</span><br><span class="line"><span class="comment"># Won&#x27;t list all the repos here, create all the related links above</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Expose-all-the-repos-using-gitolite-admin"><a href="#Expose-all-the-repos-using-gitolite-admin" class="headerlink" title="Expose all the repos using gitolite-admin"></a>Expose all the repos using gitolite-admin</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> gitolite-admin <span class="comment"># The cloned gitolite-admin at the client side</span></span><br><span class="line">$ vi conf/gitolite.conf <span class="comment"># Expose all the related repos</span></span><br><span class="line">repo boringssl</span><br><span class="line">  RW+ = gitolite</span><br><span class="line">repo catapult</span><br><span class="line">  RW+ = gitolite</span><br><span class="line">repo chromium/deps/icu</span><br><span class="line">  RW+ = gitolite</span><br><span class="line">...</span><br><span class="line">repo webm/libvpx</span><br><span class="line">  RW+ = gitolite</span><br><span class="line">$ git add conf/gitolite.conf</span><br><span class="line">$ git commit -m <span class="string">&quot;Expose all the related repos&quot;</span></span><br><span class="line">$ git push origin master</span><br></pre></td></tr></table></figure>
+
+<h2 id="Download-WebRTC-Source-Code"><a href="#Download-WebRTC-Source-Code" class="headerlink" title="Download WebRTC Source Code"></a>Download WebRTC Source Code</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> https://github.com/[username]/depot_tools.git</span><br><span class="line">$ <span class="built_in">export</span> DEPOT_TOOLS_UPDATE=0</span><br><span class="line">$ <span class="built_in">mkdir</span> -p webrtc</span><br><span class="line">$ <span class="built_in">cd</span> webrtc/</span><br><span class="line">$ git <span class="built_in">clone</span> https://github.com/[username]/webrtc.git src</span><br><span class="line">$ vi .gclient <span class="comment"># Paste the following content</span></span><br><span class="line">solutions = [</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="string">&quot;url&quot;</span>: <span class="string">&quot;https://github.com/[username]/webrtc.git&quot;</span>,</span><br><span class="line">    <span class="string">&quot;managed&quot;</span>: False,</span><br><span class="line">    <span class="string">&quot;name&quot;</span>: <span class="string">&quot;src&quot;</span>,</span><br><span class="line">    <span class="string">&quot;deps_file&quot;</span>: <span class="string">&quot;DEPS&quot;</span>,</span><br><span class="line">    <span class="string">&quot;custom_deps&quot;</span>: &#123;&#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">]</span><br><span class="line">$ vi src/DEPS <span class="comment"># Modify the following lines</span></span><br><span class="line">Replace <span class="string">&#x27;https://chromium.googlesource.com&#x27;</span> to <span class="string">&#x27;ssh://[username]@[x.x.x.x]:[port]&#x27;</span></span><br><span class="line">Replace <span class="string">&#x27;https://boringssl.googlesource.com&#x27;</span> to <span class="string">&#x27;ssh://[username]@[x.x.x.x]:[port]&#x27;</span></span><br><span class="line">$ gclient <span class="built_in">sync</span> --nohooks --verbose</span><br></pre></td></tr></table></figure>
+
+
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Jeremy Mao</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
